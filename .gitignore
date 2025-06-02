@@ -1,0 +1,30 @@
+# Archivos y carpetas de sistema
+Thumbs.db
+.DS_Store
+
+# Archivos temporales de Windows
+*.tmp
+*.bak
+*.swp
+~$*
+
+# Certificados y claves privadas (no subir a GitHub si es real)
+/apache/conf/vhost/ca/*.key
+/apache/conf/vhost/ca/*.pem
+/apache/conf/vhost/ca/*.crt
+/apache/conf/vhost/ca/*.srl
+/apache/conf/vhost/ssl/**/*.key
+/apache/conf/vhost/ssl/**/*.crt
+/apache/conf/vhost/ssl/**/*.csr
+
+# Logs
+*.log
+/apache/conf/vhost/logs/*
+
+# Archivos de entorno
+.env
+
+# Otros
+*.old
+*.bk
+*.backup

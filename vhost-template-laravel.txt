@@ -1,0 +1,36 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@{{DOMAIN}}
+    DocumentRoot "{{DOCROOT}}\public"
+    ServerName {{DOMAIN}}
+    ServerAlias www.{{DOMAIN}}
+    ErrorLog "{{LOGS_DIR}}{{DOMAIN}}-error_log"
+    CustomLog "{{LOGS_DIR}}{{DOMAIN}}-access_log" combined
+
+    <Directory "{{DOCROOT}}\public">
+        AllowOverride All
+        Require all granted
+        Options Indexes FollowSymLinks MultiViews
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@{{DOMAIN}}
+    DocumentRoot "{{DOCROOT}}\public"
+    ServerName {{DOMAIN}}
+    ServerAlias www.{{DOMAIN}}
+    ErrorLog "{{LOGS_DIR}}{{DOMAIN}}-error_log"
+    CustomLog "{{LOGS_DIR}}{{DOMAIN}}-access_log" combined
+
+    SSLEngine on
+    SSLCertificateFile "{{SSL_CERT}}"
+    SSLCertificateKeyFile "{{SSL_KEY}}"
+    SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+    SSLProtocol All -SSLv2 -SSLv3
+    SSLHonorCipherOrder On
+
+    <Directory "{{DOCROOT}}\public">
+        AllowOverride All
+        Require all granted
+        Options Indexes FollowSymLinks MultiViews
+    </Directory>
+</VirtualHost>
