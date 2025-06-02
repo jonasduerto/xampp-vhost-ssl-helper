@@ -1,0 +1,28 @@
+# Plantilla genérica de VirtualHost
+<VirtualHost *:80>
+    ServerAdmin webmaster@{{DOMAIN}}
+    DocumentRoot "{{DOCROOT}}"
+    ServerName {{DOMAIN}}
+    ServerAlias www.{{DOMAIN}}
+    ErrorLog "{{LOGS_DIR}}{{DOMAIN}}-error_log"
+    CustomLog "{{LOGS_DIR}}{{DOMAIN}}-access_log" combined
+    <Directory "{{DOCROOT}}">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+<VirtualHost *:443>
+    ServerAdmin webmaster@{{DOMAIN}}
+    DocumentRoot "{{DOCROOT}}"
+    ServerName {{DOMAIN}}
+    ServerAlias www.{{DOMAIN}}
+    ErrorLog "{{LOGS_DIR}}{{DOMAIN}}-error_log"
+    CustomLog "{{LOGS_DIR}}{{DOMAIN}}-access_log" combined
+    SSLEngine on
+    SSLCertificateFile "{{SSL_CERT}}"
+    SSLCertificateKeyFile "{{SSL_KEY}}"
+    <Directory "{{DOCROOT}}">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
